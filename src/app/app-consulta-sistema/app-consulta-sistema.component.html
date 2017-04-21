@@ -1,0 +1,26 @@
+<div class="container">
+    <h1>Sistema</h1>
+
+   
+   <div class="row">
+      <table class="table table-striped table-hover">
+        <thead class="thead-inverse">
+          <tr>
+            <th>Codigo</th>
+            <th>Sigla</th>
+            <th>Descrição</th>
+            <th>Operação</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let sistema of sistemas">
+            <td> {{sistema.codigo}}</td>
+            <td> {{sistema.sigla}}</td>
+            <td> {{sistema.descricao}}</td>
+            <td><div class="glyphicon glyphicon-edit" title="Editar"></div> <div class="glyphicon glyphicon-remove-sign" title="Apagar"></div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+</div>

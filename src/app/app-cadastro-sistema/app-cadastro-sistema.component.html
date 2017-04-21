@@ -1,0 +1,43 @@
+<div class="container">
+  <h1> Cadastro de Sistemas</h1>
+  <h2>{{diagnostic}} </h2>
+
+  <form #cadSisForm="ngForm" class="form-horizontal">
+    <div class="form-group row">
+      <label class="form-control-label col-md-3" for="sigla">Sigla</label>
+      <div class="col-md-3">
+        <input [(ngModel)]="sigla" type="text" class="form-control" name="sigla" required>
+      </div>
+    </div>
+     <div class="form-group row">
+      <label class="form-control-label col-md-3" for="codigo">Codigo</label>
+      <div class="col-md-3">
+        <input [(ngModel)]="codigo" type="text" class="form-control" name="codigo" required>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="form-control-label col-md-3" for="formSistema.descricao">Descrição</label>
+      <div class="col-md-3">
+        <input [(ngModel)]="descricao" type="text" class="form-control" name="descricao" required>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="tipoPessoa" class="form-control-label col-md-3">Tipo Pessoa</label>
+      <div class="col-md-6">
+        <select [(ngModel)]="tipoPessoa" name="tipoPessoa">        
+        <option *ngFor="let tipoPessoa of pessoa" [ngValue]="tipoPessoa.text">
+          {{ tipoPessoa.text }}
+        </option>
+      </select>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-md-3">
+        <button class="btn btn-primary" name="btCadSistema" (click)="cadastrar(cadSisForm)"> Cadastrar </button>
+        <button class="btn btn-primary" name="btLimpar" type="reset"> Limpar </button>
+      </div>
+    </div>
+  </form>
+
+</div>
