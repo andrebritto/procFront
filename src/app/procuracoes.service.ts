@@ -38,7 +38,12 @@ getSistemas(): Observable<Sistema[]> {
     return body || {};
   }
 
-
+deleteSistema(id: number): Observable<string> {
+    console.log("apagando sistema de id: " + id);
+    return this.http.delete(this.url + 'sistema/' + id)
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
   private handleError(error: Response | any) {
     // In a real world app, you might use a remote logging infrastructure
     let errMsg: string;

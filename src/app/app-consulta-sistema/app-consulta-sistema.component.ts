@@ -10,7 +10,7 @@ import { Sistema } from '../Sistema';
 export class AppConsultaSistemaComponent implements OnInit {
 
     errorMessage: string = "";
-    sistemas: Sistema [];
+    sistemas: Sistema[];
 
     /*
     [
@@ -156,6 +156,10 @@ export class AppConsultaSistemaComponent implements OnInit {
         }
     ];
     */
+
+    ngOnInit() {
+    }
+
     constructor(private service: ProcuracoesService) {
         this.carregarSistemas();
     }
@@ -167,7 +171,12 @@ export class AppConsultaSistemaComponent implements OnInit {
             saida => this.sistemas = saida,
             error => this.errorMessage = <any>error);
     }
-    ngOnInit() {
+
+    apagarSistema(id: number) {
+         this.service.deleteSistema(id)
+            .subscribe(
+            saida => this.carregarSistemas(),
+            error => this.errorMessage = <any>error);
     }
 
 }

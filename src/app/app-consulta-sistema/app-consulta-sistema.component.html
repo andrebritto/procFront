@@ -17,7 +17,7 @@
             <td> {{sistema.codigo}}</td>
             <td> {{sistema.sigla}}</td>
             <td> {{sistema.descricao}}</td>
-            <td><div class="glyphicon glyphicon-edit" title="Editar"></div> <div class="glyphicon glyphicon-remove-sign" title="Apagar"></div></td>
+            <td><div class="glyphicon glyphicon-edit" title="Editar"></div> <div (click)="apagarSistema(sistema.id)" class="glyphicon glyphicon-remove-sign" title="Apagar"></div></td>
           </tr>
         </tbody>
       </table>

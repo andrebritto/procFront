@@ -142,6 +142,7 @@
     },
     {
       "sigla": "SIGPF",
+      "codigo": "00001",
       "descricao": "Sistema de Cadastro de Pessoa Fisica",
       "tipoPessoa": "Pessoa Fisica",
       "id": 21
