@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { Sistema } from './Sistema';
+import { Procuracao } from './Procuracao';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 
@@ -11,7 +12,8 @@ export class ProcuracoesService {
 
   constructor(private http: Http) { }
 
-getSistemas(): Observable<Sistema[]> {
+  // ************************* Sistemas****************************************************
+  getSistemas(): Observable<Sistema[]> {
 
     return this.http.get(this.url + 'sistema/')
       .map(this.extractData)
@@ -23,26 +25,45 @@ getSistemas(): Observable<Sistema[]> {
     let options = new RequestOptions({ headers: headers });
     let body = JSON.stringify(obj);
     console.log("Dado de entrada: " + obj);
-    return this.http.post(this.url + "sistema/", {      
+    return this.http.post(this.url + "sistema/", {
       sigla: obj.sigla,
-      codigo:obj.codigo,
+      codigo: obj.codigo,
       descricao: obj.descricao,
       tipoPessoa: obj.tipoPessoa
     }, options)
       .map(this.extractData)
       .catch(this.handleError);
   }
-  private extractData(res: Response) {
-    let body = res.json();
-    console.log("extractData: " + JSON.stringify(body));
-    return body || {};
-  }
 
-deleteSistema(id: number): Observable<string> {
+  deleteSistema(id: number): Observable<string> {
     console.log("apagando sistema de id: " + id);
     return this.http.delete(this.url + 'sistema/' + id)
       .map(this.extractData)
       .catch(this.handleError);
+  }
+
+  // ******************************Procuração ********************************
+  createProcuracao(obj: Procuracao): Observable<Procuracao> {
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    let body = JSON.stringify(obj);
+    console.log("Dado de entrada: " + obj);
+    return this.http.post(this.url + "procuracao/", {
+      niTitular: obj.niTitular,
+      niProcurador: obj.niProcurador,
+      dtInicioVigencia: obj.dtInicioVigencia,
+      dtFimVigencia: obj.dtFimVigencia,
+      sistemas: obj.sistemas
+    }, options)
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
+  // ******************************* Infra ************************************
+  private extractData(res: Response) {
+    let body = res.json();
+    console.log("extractData: " + JSON.stringify(body));
+    return body || {};
   }
   private handleError(error: Response | any) {
     // In a real world app, you might use a remote logging infrastructure

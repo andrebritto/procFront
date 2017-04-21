@@ -29,3 +29,24 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 
 http://www.filltext.com/?rows=20&pretty=true&id={index}&codigo={zip}&sigla={business}&descricao={lorem|3}&tipoPessoa=[1,2,3]
+http://www.filltext.com/?rows=2&pretty=true&id={index}&niTitular={numberLength|11}&niProcurador={numberLength|11}
+
+
+
+
+{"niTitular":"00000000000","niProcurador":"99999999999","sistemas":[89735,00001,17330]}
+
+[
+    {
+        "id": 1,
+        "niTitular": 68393934592,
+        "niProcurador": 44573078164,"dtInicioVigencia":"2017-04-21","dtFimVigencia":"2017-04-28",
+        "sistemas":[89735,00001,17330]
+    },
+    {
+        "id": 2,
+        "niTitular": 28550487018,
+        "niProcurador": 13731463616,"dtInicioVigencia":"2017-04-21","dtFimVigencia":"2017-04-28",
+        "sistemas":[89735,00001,17330]
+    }
+]

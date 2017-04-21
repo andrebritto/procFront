@@ -1,4 +1,58 @@
 {
+  "procuracao": [
+    {
+      "id": 1,
+      "niTitular": 68393934592,
+      "niProcurador": 44573078164,
+      "dtInicioVigencia": "2017-04-21",
+      "dtFimVigencia": "2017-04-28",
+      "sistemas": [
+        "89735",
+        "00001",
+        "17330"
+      ]
+    },
+    {
+      "id": 2,
+      "niTitular": 28550487018,
+      "niProcurador": 13731463616,
+      "dtInicioVigencia": "2017-04-21",
+      "dtFimVigencia": "2017-04-28",
+      "sistemas": [
+        "89735",
+        "00001",
+        "17330"
+      ]
+    },
+    {
+      "niTitular": "68281455500",
+      "niProcurador": "56765425311",
+      "dtInicioVigencia": "2017-04-21",
+      "dtFimVigencia": "2017-04-27",
+      "sistemas": [
+        89735,
+        "00001",
+        17330
+      ],
+      "id": 3
+    },
+    {
+      "niTitular": "68281455500",
+      "niProcurador": "00000000000",
+      "dtInicioVigencia": "2017-04-21",
+      "dtFimVigencia": "2017-04-27",
+      "sistemas": [
+        89735,
+        "00001",
+        17330,
+        21807,
+        29793,
+        55375,
+        68974
+      ],
+      "id": 4
+    }
+  ],
   "sistema": [
     {
       "id": 1,

@@ -1,3 +1,51 @@
-<p>
-  app-cadastro-procuracao works!
-</p>
+<div class="container">
+  <h2>{{diagnostic}} </h2>
+
+  <form #cadProcForm="ngForm" class="form-horizontal">
+    <div class="form-group row">
+      <label class="form-control-label col-md-3" for="niTitular">Titular</label>
+      <div class="col-md-3">
+        <input [(ngModel)]="niTitular" type="text" class="form-control" name="niTitular" required>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="form-control-label col-md-3" for="niProcurador">Procurador</label>
+      <div class="col-md-3">
+        <input [(ngModel)]="niProcurador" type="text" class="form-control" name="niProcurador" required>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="form-control-label col-md-3" for="dtInicioVigencia">Inicio Vigência</label>
+      <div class="col-md-3">
+        <input [(ngModel)]="dtInicioVigencia" type="date" class="form-control" name="dtInicioVigencia" required>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="form-control-label col-md-3" for="dtFimVigencia">Fim Vigencia</label>
+      <div class="col-md-3">
+        <input [(ngModel)]="dtFimVigencia" type="date" class="form-control" name="dtFimVigencia" required>
+      </div>
+    </div>
+
+    <div class="form-group row">
+
+      <fieldset class="standard">
+        <legend>Sistemas <input type="text" #x (keyup)="0"></legend>
+        <div *ngFor="let sistema of sistemasDisponiveis">
+          <div *ngIf="(sistema.descricao.indexOf(x.value) > 0) || !(x.value)">
+            <input type="checkbox" #s  name="s" (click)="marcaSistema(sistema,$event.target.checked)">
+            {{sistema.sigla}} - {{sistema.descricao}} 
+          </div>
+        </div>
+      </fieldset>
+    </div>
+    <div class="form-group row">
+      <div class="col-md-3">
+        <button class="btn btn-primary" name="btCadSistema" (click)="cadastrar(cadProcForm)"> Cadastrar </button>
+        <button class="btn btn-primary" name="btLimpar" type="reset"> Limpar </button>
+      </div>
+    </div>
+    <input type="hidden" [(ngModel)]="sistemas" name="sistemas">
+  </form>
+
+</div>
