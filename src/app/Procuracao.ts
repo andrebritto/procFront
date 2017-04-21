@@ -5,6 +5,7 @@ export class Procuracao {
         public dtInicioVigencia: string,
         public dtFimVigencia: string,
         public sistemas: string[],
-        public id?: number
+        public id?: number,
+        public status?:string
     ) { }
 }

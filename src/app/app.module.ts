@@ -10,12 +10,13 @@ import { AppCadastroSistemaComponent } from './app-cadastro-sistema/app-cadastro
 import { AppCadastroProcuracaoComponent } from './app-cadastro-procuracao/app-cadastro-procuracao.component';
 import { AppConsultaProcuracaoComponent } from './app-consulta-procuracao/app-consulta-procuracao.component';
 import { AppConsultaSistemaComponent } from './app-consulta-sistema/app-consulta-sistema.component';
+import { Ng2OrderModule } from 'ng2-order-pipe';
 
 const appRoutes: Routes = [
  
   { path: 'consultaSistema', component: AppConsultaSistemaComponent },
   { path: 'cadastroSistema', component: AppCadastroSistemaComponent },
-  { path: 'consultaProcuracao', component: AppConsultaSistemaComponent },
+  { path: 'consultaProcuracao', component: AppConsultaProcuracaoComponent },
   { path: 'cadastroProcuracao', component: AppCadastroProcuracaoComponent },
 
  { path: 'home', component: AppComponent }
@@ -36,6 +37,7 @@ const appRoutes: Routes = [
     BrowserModule,
     FormsModule,
     HttpModule,
+    Ng2OrderModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [ProcuracoesService],

@@ -47,7 +47,7 @@ export class ProcuracoesService {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
     let body = JSON.stringify(obj);
-    console.log("Dado de entrada: " + obj);
+    console.log("Dado de entrada: " + body);
     return this.http.post(this.url + "procuracao/", {
       niTitular: obj.niTitular,
       niProcurador: obj.niProcurador,
@@ -55,6 +55,45 @@ export class ProcuracoesService {
       dtFimVigencia: obj.dtFimVigencia,
       sistemas: obj.sistemas
     }, options)
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
+updateProcuracao(obj: Procuracao): Observable<Procuracao> {
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    let body = JSON.stringify(obj);
+    console.log("Dado de entrada: " + body);
+    return this.http.put(this.url + "procuracao/"+obj.id, {
+      id: obj.id,
+      niTitular: obj.niTitular,
+      niProcurador: obj.niProcurador,
+      dtInicioVigencia: obj.dtInicioVigencia,
+      dtFimVigencia: obj.dtFimVigencia,
+      sistemas: obj.sistemas,
+      status: obj.status
+    }, options)
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
+  getProcuracoesPorTitular(niTitular:string): Observable<Procuracao[]> {
+
+    return this.http.get(this.url + 'procuracao/?niTitular=' + niTitular)
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
+  getProcuracoesPorProcurador(niProcurador:string): Observable<Procuracao[]> {
+
+    return this.http.get(this.url + 'procuracao/?niProcurador=' + niProcurador)
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
+  getProcuracoesPorFiltroQuery(query:string): Observable<Procuracao[]> {
+
+    return this.http.get(this.url + 'procuracao/'+query)
       .map(this.extractData)
       .catch(this.handleError);
   }
