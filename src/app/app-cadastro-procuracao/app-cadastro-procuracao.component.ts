@@ -40,8 +40,8 @@ export class AppCadastroProcuracaoComponent implements OnInit {
       dtFimVigencia: form.value.dtFimVigencia,
       sistemas: form.value.sistemas
     }
-console.log("entrada do formulario: " + JSON.stringify(this.proc));
-console.log("entrada do form.value.dtInicioVigencia: " + form.value.dtInicioVigencia);
+    console.log("entrada do formulario: " + JSON.stringify(this.proc));
+    console.log("entrada do form.value.dtInicioVigencia: " + form.value.dtInicioVigencia);
     this.service.createProcuracao(this.proc)
       .subscribe(
       saida => this.resultado = JSON.stringify(saida),
@@ -50,7 +50,12 @@ console.log("entrada do form.value.dtInicioVigencia: " + form.value.dtInicioVige
     console.log("Post Saida: " + this.resultado);
   }
 
+  filter(sistema: Sistema, termo: string): boolean {    
+    var resDescricao = sistema.descricao.toLowerCase().search(termo.toLowerCase());
+    var resSigla = sistema.sigla.toLowerCase().search(termo.toLowerCase());
 
+    return ((resSigla*resDescricao)==0);
+  }
 
 
   marcaSistema(id: any, checked: any) {

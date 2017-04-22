@@ -12,6 +12,7 @@ import { AppConsultaProcuracaoComponent } from './app-consulta-procuracao/app-co
 import { AppConsultaSistemaComponent } from './app-consulta-sistema/app-consulta-sistema.component';
 import { Ng2OrderModule } from 'ng2-order-pipe';
 
+
 const appRoutes: Routes = [
  
   { path: 'consultaSistema', component: AppConsultaSistemaComponent },

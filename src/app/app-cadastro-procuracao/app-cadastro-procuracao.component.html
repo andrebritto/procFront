@@ -1,5 +1,4 @@
 <div class="container">
-  <h2>{{diagnostic}} </h2>
 
   <form #cadProcForm="ngForm" class="form-horizontal">
     <div class="form-group row">
@@ -28,16 +27,13 @@
     </div>
 
     <div class="form-group row">
-
-      <fieldset class="standard">
-        <legend>Sistemas <input type="text" #x (keyup)="0"></legend>
+        <label>Sistemas Filtro</label> <input type="text" #x (keyup)="0">
         <div *ngFor="let sistema of sistemasDisponiveis">
-          <div *ngIf="(sistema.descricao.indexOf(x.value) > 0) || !(x.value)">
+          <div *ngIf="(filter(sistema,x.value)) || !(x.value)">
             <input type="checkbox" #s  name="s" (click)="marcaSistema(sistema,$event.target.checked)">
             {{sistema.sigla}} - {{sistema.descricao}} 
           </div>
         </div>
-      </fieldset>
     </div>
     <div class="form-group row">
       <div class="col-md-3">
