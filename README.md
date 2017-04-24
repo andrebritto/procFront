@@ -30,4 +30,3 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## Componente de terceiro
 
 [ng2-order-pipe](https://www.npmjs.com/package/ng2-order-pipe)
-[ng2-search-filter](https://www.npmjs.com/package/ng2-search-filter)
