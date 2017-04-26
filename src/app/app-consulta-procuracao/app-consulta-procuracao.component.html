@@ -1,14 +1,13 @@
 <div class="container">
     <h1>Procurações</h1>
     <div class="form-group row"> 
-      <label class="form-control-label col-md-3" for="filtroTitular">Titular</label>
-      <div class="col-md-3">
-        <input [(ngModel)]="filtroTitular" type="text" class="form-control" name="filtroTitular">
-        <button (click)="buscarProcuracaoPorTitular(filtroTitular)">Buscar por Titular</button>
+      <label class="form-control-label col-md-2" for="filtroTitular">Titular</label>
+      <div class="col-md-3 col-md-auto">
+        <input [(ngModel)]="filtroTitular" type="text" class="form-control" name="filtroTitular"><button (click)="buscarProcuracaoPorTitular(filtroTitular)">Buscar por Titular</button>
       </div>
     </div>
     <div class="form-group row">
-      <label class="form-control-label col-md-3" for="filtroProcurador">Procurador</label>
+      <label class="form-control-label col-md-2" for="filtroProcurador">Procurador</label>
       <div class="col-md-3">      
         <input [(ngModel)]="filtroProcurador" type="text" class="form-control" name="filtroProcurador">
         <button (click)="buscarProcuracaoPorProcurador(filtroProcurador)">Buscar por Procurador</button>
@@ -16,7 +15,7 @@
     </div>
    
     <div class="form-group row">
-          <label class="form-control-label col-md-3" for="filtroProcurador">NI Filtro Dinâmico</label>
+          <label class="form-control-label col-md-2" for="filtroProcurador">NI Filtro Dinâmico</label>
           <div class="col-md-3">
             <input type="text" #fNi (keyup)="0" class="form-control">     
             
@@ -27,31 +26,36 @@
     <div class="list-group" *ngFor="let proc of procuracoes | orderBy : ord : rev"> 
           <div *ngIf="(filter(proc,fNi.value)) || !(fNi.value)">
                     <div class="row">
-                      <div class="col-md-4"> 
+                      <div class="col-md-4 col-md-auto"> 
                         <label class="form-control-label">Titular: </label> {{proc.niTitular}} 
                       </div>
                     </div>                    
               
                     <div class="row">
-                      <div class="col-md-4"> 
+                      <div class="col-md-4 col-md-auto"> 
                           <label class="form-control-label">Procurador: </label>{{proc.niProcurador}} 
                       </div>
                     </div>
                     <div class="row">
-                      <div class="col-md-4">
+                      <div class="col-md-4 col-md-auto">
                         <label class="form-control-label">Vigência: </label>De {{proc.dataInicioVigencia}} a {{proc.dataFimVigencia}}
                       </div>
                     </div> 
 
                     <div class="row">
-                      <div class="col-md-4"> 
+                      <div class="col-md-4 col-md-auto"> 
                           <label class="form-control-label">Origem: </label>{{proc.origem}} 
+                        </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-4 col-md-auto"> 
+                          <label class="form-control-label">Origem: </label>{{proc.situacao}} 
                         </div>
                     </div>
 
                     <div class="row">
-                      <div class="col-md-4"> 
-                          <label class="form-control-label">Sistema:</label>                           
+                      <div class="col-md-12 col-md-auto"> 
+                          <label class="form-control-label">Sistemas:</label>                           
                           <div *ngFor="let s of proc.sistemas">
                             <span class="col-md-4 border-4">{{s.codigo}} - {{s.sigla}}</span>                             
                           </div> 

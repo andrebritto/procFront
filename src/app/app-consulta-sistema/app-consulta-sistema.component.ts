@@ -18,6 +18,7 @@ export class AppConsultaSistemaComponent implements OnInit {
     }
 
     constructor(private service: ProcuracoesService) {
+        
         this.carregarSistemas();
     }
 
