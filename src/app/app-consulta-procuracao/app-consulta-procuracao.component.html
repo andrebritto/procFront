@@ -1,30 +1,63 @@
 <div class="container">
     <h1>Procurações</h1>
-
-   
-   <div class="row">
-      <table class="table table-striped table-hover">
-        <thead class="thead-inverse">
-          <tr>
-            <th><div class="glyphicon glyphicon-chevron-down" (click)="ordenar('niTitular',$event)"></div>Titular</th>
-            <th><div class="glyphicon glyphicon-chevron-down" (click)="ordenar('niProcurador',$event)"></div>Procurador</th>
-            <th><div class="glyphicon glyphicon-chevron-down" (click)="ordenar('dtInicioVigencia',$event)"></div>Inicio Vigencia</th>
-            <th><div class="glyphicon glyphicon-chevron-down" (click)="ordenar('dtFimVigencia',$event)"></div>Fim Vigencia</th>
-            <th><div class="glyphicon glyphicon-chevron-down" (click)="ordenar('status',$event)">Status</div></th>
-            <th>Operação</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let proc of procuracoes | orderBy : ord : rev">
-            <td> {{proc.niTitular}}</td>
-            <td> {{proc.niProcurador}}</td>
-            <td> {{proc.dtInicioVigencia}}</td>
-            <td> {{proc.dtFimVigencia}}</td>
-            <td> {{proc.status}}</td>
-            <td><div (click)="cancelar(proc)" class="glyphicon glyphicon-remove-sign" title="Cancelar Procuração"></div></td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="form-group row"> 
+      <label class="form-control-label col-md-3" for="filtroTitular">Titular</label>
+      <div class="col-md-3">
+        <input [(ngModel)]="filtroTitular" type="text" class="form-control" name="filtroTitular">
+        <button (click)="buscarProcuracaoPorTitular(filtroTitular)">Buscar por Titular</button>
+      </div>
     </div>
+    <div class="form-group row">
+      <label class="form-control-label col-md-3" for="filtroProcurador">Procurador</label>
+      <div class="col-md-3">      
+        <input [(ngModel)]="filtroProcurador" type="text" class="form-control" name="filtroProcurador">
+        <button (click)="buscarProcuracaoPorProcurador(filtroProcurador)">Buscar por Procurador</button>
+      </div>
+    </div>
+   
+    <div class="form-group row">
+          <label class="form-control-label col-md-3" for="filtroProcurador">NI Filtro Dinâmico</label>
+          <div class="col-md-3">
+            <input type="text" #fNi (keyup)="0" class="form-control">     
+            
+          </div>
+    </div>
+
+
+    <div class="list-group" *ngFor="let proc of procuracoes | orderBy : ord : rev"> 
+          <div *ngIf="(filter(proc,fNi.value)) || !(fNi.value)">
+                    <div class="row">
+                      <div class="col-md-4"> 
+                        <label class="form-control-label">Titular: </label> {{proc.niTitular}} 
+                      </div>
+                    </div>                    
+              
+                    <div class="row">
+                      <div class="col-md-4"> 
+                          <label class="form-control-label">Procurador: </label>{{proc.niProcurador}} 
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-4">
+                        <label class="form-control-label">Vigência: </label>De {{proc.dataInicioVigencia}} a {{proc.dataFimVigencia}}
+                      </div>
+                    </div> 
+
+                    <div class="row">
+                      <div class="col-md-4"> 
+                          <label class="form-control-label">Origem: </label>{{proc.origem}} 
+                        </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-4"> 
+                          <label class="form-control-label">Sistema:</label>                           
+                          <div *ngFor="let s of proc.sistemas">
+                            <span class="col-md-4 border-4">{{s.codigo}} - {{s.sigla}}</span>                             
+                          </div> 
+                      
+                    </div>  
+          </div>
+      </div>
 
 </div>

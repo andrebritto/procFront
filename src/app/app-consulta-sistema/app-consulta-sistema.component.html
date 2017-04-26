@@ -1,26 +1,23 @@
 <div class="container">
-    <h1>Sistema</h1>
+    <h1>Sistema <input type="text" #x (keyup)="0"></h1>   
 
-   
-   <div class="row">
-      <table class="table table-striped table-hover">
-        <thead class="thead-inverse">
-          <tr>
-            <th>Codigo</th>
-            <th>Sigla</th>
-            <th>Descrição</th>
-            <th>Operação</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let sistema of sistemas">
-            <td> {{sistema.codigo}}</td>
-            <td> {{sistema.sigla}}</td>
-            <td> {{sistema.descricao}}</td>
-            <td><div class="glyphicon glyphicon-edit" title="Editar"></div> <div (click)="apagarSistema(sistema.id)" class="glyphicon glyphicon-remove-sign" title="Apagar"></div></td>
-          </tr>
-        </tbody>
-      </table>
+          <div class="list-group" *ngFor="let sistema of sistemas">   
+            <div *ngIf="(filter(sistema,x.value)) || !(x.value)">                          
+              <div class="row">
+                <div class="col-md-4"> 
+                  <label class="form-control-label">Codigo:</label> {{sistema.codigo}} 
+                </div>
+              </div>
+              <div class="row">
+                 <div class="col-md-4"> 
+                    <label class="form-control-label">Sigla:</label>{{sistema.sigla}} 
+                  </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4">
+                  <label class="form-control-label">Descrição:</label>{{sistema.descricao}}
+                </div>
+              </div>            
+          </div>
+        </div>              
     </div>
-
-</div>

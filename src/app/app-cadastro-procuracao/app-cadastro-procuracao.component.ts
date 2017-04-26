@@ -36,12 +36,11 @@ export class AppCadastroProcuracaoComponent implements OnInit {
     this.proc = {
       niTitular: form.value.niTitular,
       niProcurador: form.value.niProcurador,
-      dtInicioVigencia: form.value.dtInicioVigencia,
-      dtFimVigencia: form.value.dtFimVigencia,
+      dataInicioVigencia: form.value.dataInicioVigencia,
+      dataFimVigencia: form.value.dataFimVigencia,
       sistemas: form.value.sistemas
     }
-    console.log("entrada do formulario: " + JSON.stringify(this.proc));
-    console.log("entrada do form.value.dtInicioVigencia: " + form.value.dtInicioVigencia);
+   
     this.service.createProcuracao(this.proc)
       .subscribe(
       saida => this.resultado = JSON.stringify(saida),

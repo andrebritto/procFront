@@ -1,9 +1,9 @@
 export class Sistema {
     constructor(
-        public codigo: number,
+        public codigo: string,
         public sigla: string,
         public descricao: string,
         public tipoPessoa: number,
-        public id?: number
+        public isn?: number
     ) { }
 }
